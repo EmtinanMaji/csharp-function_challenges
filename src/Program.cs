@@ -21,13 +21,56 @@ namespace FunctionChallenges
             }
             catch (Exception ex)
             {
-            Console.WriteLine($"Error: {ex.Message}");
+            Console.WriteLine("Error: " + ex.Message);
             }
             }
 
         Console.WriteLine($"{totalString.TrimEnd()}; {totalNum}");
         }
 
+        // Challenge 2
+        static void SwapObjects(ref int num1, ref int num2)
+        {
+            if (num1 > 18 && num2 > 18)
+            {
+                int temp = num1;
+                num1 = num2;
+                num2 = temp;
+                Console.WriteLine($"num1 = {num1}, num2 = {num2}");       
+            }
+            else
+            {
+                Console.WriteLine("Error: Value must be more than 18");
+            }
+
+        }
+        static void SwapObjects(string str1, string str2)
+        {
+             // Check if the lengths of strings are more than 5
+            if (str1.Length > 5 && str2.Length > 5)
+            {
+                string temp = str1;
+                str1 = str2;
+                str2 = temp;
+                Console.WriteLine($"str1 = {str1}, str2 = {str2}");
+            }
+            else
+            {
+                Console.WriteLine("Error:Length must be more than 5");
+            }
+
+        }
+        static void SwapObjects( object obj1, object obj2)
+        {
+            if (obj1.GetType() != obj2.GetType()){
+                Console.WriteLine("Error: Objects must be of the same types");
+            }
+            else
+            {
+                Console.WriteLine("Error: Unsupported data type");
+            }
+        
+        }
         // Challenge 3
         static void GuessingGame()
         {
@@ -76,7 +119,7 @@ namespace FunctionChallenges
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("An error occurred: " + ex.Message);
+                    Console.WriteLine("Error: " + ex.Message);
                 }
             }
         }
@@ -100,7 +143,7 @@ namespace FunctionChallenges
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine("Error: " + ex.Message);
                 return string.Empty;
             }
         }
@@ -112,7 +155,25 @@ namespace FunctionChallenges
             StringNumberProcessor("Hello", 100, 200, "World"); // Expected outcome: "Hello World; 300"
             StringNumberProcessor("Welcome", 80.5, "to",375.56, "SDA",500);
 
-            
+             // Challenge 2: Object Swapper
+            Console.WriteLine("\nChallenge 2: Object Swapper");
+            int num1 = 25, num2 = 30;
+            int num3 = 10, num4 = 30;
+            string str1 = "HelloWorld", str2 = "Programming";
+            string str3 = "Hi", str4 = "Programming";
+                          
+            SwapObjects(ref num1, ref num2); // Expected outcome: num1 = 30, num2 = 25  
+            SwapObjects(ref num3, ref num4); // Error: Value must be more than 18
+
+            SwapObjects(str1, str2); // Expected outcome: str1 = "Programming", str2 = "HelloWorld"
+            SwapObjects(str3, str4); // Error: Length must be more than 5
+
+            SwapObjects(true, false); // Error: Upsupported data type
+            SwapObjects(num1, str1); // Error: Objects must be of same types
+
+            Console.WriteLine($"Numbers: {num1}, {num2}");
+            Console.WriteLine($"Strings: {str1}, {str2}");
+
             // Challenge 3: Guessing Game
             Console.WriteLine("\nChallenge 3: Guessing Game");
             // Uncomment to test the GuessingGame method
